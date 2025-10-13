@@ -11,7 +11,7 @@
     <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
         <div class="card shadow-sm p-4" style="min-width: 350px;">
             <h3 class="mb-4 text-center">Login</h3>
-            <form method="POST" action="{{ route('client.store') }}">
+            <form method="GET" action="{{ route('client.show') }}">
                 @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">Email Address</label>
@@ -33,6 +33,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Login</button>
             </form>
+            <a href="{{ route('client.create') }}">register</a>
             <div class="mt-3 text-center">
             </div>
         </div>

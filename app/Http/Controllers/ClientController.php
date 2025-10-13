@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\client;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreclientRequest;
 use App\Http\Requests\UpdateclientRequest;
 
@@ -13,7 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('home.dashboard.index');
+        return view('home.dashboard.homepage');
     }
 
     /**
@@ -27,23 +28,28 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-public function store(StoreclientRequest $request)
-{
-    $client = client::where('email', $request->email)->where('password', $request->password)->first();
+    public function store(StoreclientRequest $request)
+    {
     
-    if ($client == true) {
-        return view('home.dashboard.index');
-    }else {
-        dd($request);
     }
-}
 
     /**
      * Display the specified resource.
      */
-    public function show(client $client)
+    public function show(Request $request)
     {
-        //
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        $client = client::all()->where('email', $request->email)->where('password', $request->password)->first();
+
+        if ($client == true) {
+            return view('home.dashboard.homepage', compact('client'));
+        }else{
+            dd($request);
+        }
     }
 
     /**
