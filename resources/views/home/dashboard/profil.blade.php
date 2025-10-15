@@ -10,23 +10,6 @@
     </button>
 </div>
 
-<!-- Edit form (hidden by default) -->
-<div id="editProfileCard" class="profile-card-full mt-4" style="display:none; max-width:420px; margin:16px auto;">
-    <div style="padding:16px;">
-        <h5 class="mb-3" style="color:#a05a1c;">Edit Profile</h5>
-
-        <div class="mb-3">
-            <label class="form-label small">Nama</label>
-            <input id="editName" class="form-control" type="text" value="John Doe">
-        </div>
-
-        <div class="d-flex gap-2">
-            <button id="saveProfile" class="option-link" style="flex:1;text-align:center;">Simpan</button>
-            <button id="cancelEdit" class="btn btn-outline-secondary" style="flex:1;">Batal</button>
-        </div>
-    </div>
-</div>
-
 <!-- Tombol tutup overlay di bawah -->
 <a href="#" class="user-card-bottom" onclick="parent.postMessage('close-profil-overlay','*');return false;">
     <span class="user-icon">

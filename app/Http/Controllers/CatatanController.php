@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Catatan;
+use App\Http\Requests\StoreCatatanRequest;
+use App\Http\Requests\UpdateCatatanRequest;
 
 class CatatanController extends Controller
 {
@@ -25,7 +27,7 @@ class CatatanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCatatanRequest $request)
     {
         //
     }
@@ -33,7 +35,7 @@ class CatatanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Catatan $catatan)
     {
         //
     }
@@ -41,7 +43,7 @@ class CatatanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Catatan $catatan)
     {
         //
     }
@@ -49,7 +51,7 @@ class CatatanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCatatanRequest $request, Catatan $catatan)
     {
         //
     }
@@ -57,7 +59,7 @@ class CatatanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Catatan $catatan)
     {
         //
     }
