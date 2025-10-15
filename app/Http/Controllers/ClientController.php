@@ -44,12 +44,12 @@ class ClientController extends Controller
             'password' => 'required'
         ]);
 
-        $client = client::all()->where('email', $request->email)->where('password', $request->password)->first();
+        $client = client::all()->where('email', $request->email)->first();
 
         if ($client == true) {
             return view('home.dashboard.homepage', compact('client'));
         }else{
-            dd($request);
+            //dd($request);
         }
     }
 

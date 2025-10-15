@@ -14,5 +14,9 @@ class Catatan extends Model
         'judul',
         'isi',
         'kategori',
+        'user',
     ];
+
+    protected $guarded = [];
+
 }

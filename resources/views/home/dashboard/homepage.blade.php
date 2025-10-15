@@ -1,11 +1,15 @@
 @extends('home.layout.app')
 @section('content')
+<?php
+    //dd(Auth::user());
+?>
     <!-- User Card di luar container agar menempel penuh -->
     <div class="user-card" id="userCard">
         <span class="">
-            <img src="{{ $client->avatar }}" alt="" class="user-icon">
+            <img src="{{ optional(Auth::user())->avatar ?? asset('images/default-avatar.png') }}" 
+                alt="Avatar" class="user-icon">
         </span>
-        {{ $client->name }}
+        {{ Auth::user()->name }}
     </div>
     <div class="dashboard-container">
         <!-- Tambah Catatan Button -->
@@ -15,6 +19,31 @@
         <!-- Search Bar -->
         <input type="text" class="search-bar" placeholder="&#xf002; Telusuri Catatan" style="font-family: 'Font Awesome 6 Free', Arial, sans-serif; font-weight:400;">
     </div>
+    @foreach ( $catatan as $row)
+    <div class="dashboard-container">
+        <!-- Tambah Catatan Button -->
+        <a href="{{ route('catatan.show', $row->id) }}" class="btn btn-tambah-catatan mb-3">
+            <table>
+                <tr>
+                    <td>
+                        <p>{{ $row['judul'] }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6>{{ $row['isi'] }}</h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6>{{ $row['created_at'] }}</h6>
+                    </td>
+                </tr>
+            </table>
+        </a>
+    </div>  
+    @endforeach
+    
     <!-- Profil Overlay -->
     <div id="profilOverlay" class="profil-overlay">
         <div class="card shadow">

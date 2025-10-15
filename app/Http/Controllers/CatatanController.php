@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Catatan;
 use App\Http\Requests\StoreCatatanRequest;
 use App\Http\Requests\UpdateCatatanRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CatatanController extends Controller
 {
@@ -29,7 +30,16 @@ class CatatanController extends Controller
      */
     public function store(StoreCatatanRequest $request)
     {
-        dd($request);
+       // dd($request->validated());
+        $data = $request->validated();
+        Catatan::create([
+            'judul' => $request->validated('judul'),
+            'isi' => $request->validated('isi'),
+            'user' => Auth::id()
+        ]);
+        
+
+        return redirect()->route('google.login');
     }
 
     /**

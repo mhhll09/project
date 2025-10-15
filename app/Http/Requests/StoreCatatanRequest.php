@@ -21,10 +21,10 @@ class StoreCatatanRequest extends FormRequest
      */
     public function rules(): array
     {
+        //dd($this->all());
         return [
             'judul' => 'required',
             'isi' => 'required',
-            'kategori' => 'required',
         ];
     }
 }
