@@ -13,7 +13,7 @@ class CatatanController extends Controller
      */
     public function index()
     {
-        return view('home.catatan.index');
+        
     }
 
     /**
@@ -21,7 +21,7 @@ class CatatanController extends Controller
      */
     public function create()
     {
-        //
+        return view('home.catatan.index');
     }
 
     /**
@@ -29,7 +29,7 @@ class CatatanController extends Controller
      */
     public function store(StoreCatatanRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**

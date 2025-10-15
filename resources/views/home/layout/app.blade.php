@@ -477,6 +477,7 @@ function saveNote() {
   alert('Catatan tersimpan!');
 }
 
+
     </script>
 </body>
 </html>

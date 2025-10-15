@@ -9,7 +9,7 @@
     </div>
     <div class="dashboard-container">
         <!-- Tambah Catatan Button -->
-        <a href="{{ route('catatan.store') }}" class="btn btn-tambah-catatan mb-3">
+        <a href="{{ route('catatan.create') }}" class="btn btn-tambah-catatan mb-3">
             <i class="fas fa-plus"></i> Tambah Catatan
         </a>
         <!-- Search Bar -->
@@ -32,7 +32,6 @@
         document.getElementById('userCard').onclick = function() {
             document.getElementById('profilOverlay').classList.add('active');
         };
-        // Terima pesan dari iframe untuk menutup overlay
         window.addEventListener('message', function(event) {
             if (event.data === 'close-profil-overlay') {
                 document.getElementById('profilOverlay').classList.remove('active');

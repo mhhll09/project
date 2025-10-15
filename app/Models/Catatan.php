@@ -9,4 +9,10 @@ class Catatan extends Model
 {
     /** @use HasFactory<\Database\Factories\CatatanFactory> */
     use HasFactory;
+
+    protected $illable = [ 
+        'judul',
+        'isi',
+        'kategori',
+    ];
 }

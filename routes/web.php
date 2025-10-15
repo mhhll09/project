@@ -14,6 +14,9 @@ Route::get('/', function () {
 
 Route::get('client/show', [ClientController::class, 'show'])->name('client.show');
 
+Route::post('/catatan', [CatatanController::class, 'store'])->name('catatan.store');
+
+
 Route::resource('client', ClientController::class);
 Route::resource('catatan', CatatanController::class);
 Route::resource('profil', ProfilController::class);

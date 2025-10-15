@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('catatans', function (Blueprint $table) {
             $table->id();
+            $table->string('judul');
+            $table->string('isi');
+            $table->string('kategori')->nullable();
             $table->timestamps();
         });
     }
