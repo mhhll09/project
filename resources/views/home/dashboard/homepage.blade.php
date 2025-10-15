@@ -26,7 +26,6 @@
                 </iframe>
             </div>
         </div>
-    </div>
     <script>
         // User card trigger
         document.getElementById('userCard').onclick = function() {

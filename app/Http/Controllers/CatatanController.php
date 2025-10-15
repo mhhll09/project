@@ -11,7 +11,7 @@ class CatatanController extends Controller
      */
     public function index()
     {
-        return view('home.dashboard.catatan');
+        return view('home.catatan.index');
     }
 
     /**
