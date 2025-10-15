@@ -2,8 +2,8 @@
 @section('content')
     <!-- User Card di luar container agar menempel penuh -->
     <div class="user-card" id="userCard">
-        <span class="user-icon">
-            <i class="fas fa-user">{{ $client->avatar }}</i>
+        <span class="">
+            <img src="{{ $client->avatar }}" alt="" class="user-icon">
         </span>
         {{ $client->name }}
     </div>

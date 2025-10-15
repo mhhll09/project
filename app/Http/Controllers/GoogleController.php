@@ -3,62 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\client;
+use Illuminate\Support\Facades\Auth;
 
 class GoogleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    // Redirect ke Google
+    public function redirectToGoogle()
     {
-        //
+        return Socialite::driver('google')->redirect();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // Callback dari Google
+    public function handleGoogleCallback()
     {
-        //
-    }
+        try {
+            $googleUser = Socialite::driver('google')->stateless()->user();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+            $client = client::updateOrCreate(
+                ['email' => $googleUser->getEmail()],
+                [
+                    'name' => $googleUser->getName(),
+                    'google_id' => $googleUser->getId(),
+                    'avatar' => $googleUser->getAvatar(),
+                    'password' => bcrypt('defaultpassword'), // optional
+                ]
+            );
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+            Auth::login($client);
+            return view('home.dashboard.homepage', compact('client'));
+        } catch (\Exception $e) {   
+            return redirect('/login')->with('error', 'Gagal login dengan Google.');
+        }
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\client;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreclientRequest;
@@ -13,8 +15,7 @@ class ClientController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('home.dashboard.homepage');
+    {   
     }
 
     /**
