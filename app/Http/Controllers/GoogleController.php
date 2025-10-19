@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\{client, catatan};
+use App\Models\{client, Catatan};
 use Illuminate\Support\Facades\Auth;
 
 class GoogleController extends Controller
@@ -32,7 +32,7 @@ class GoogleController extends Controller
             );
 
             Auth::login($client);
-            $catatan = catatan::where( 'user', Auth::id() )->get();
+            $catatan = Catatan::where( 'user', Auth::id() )->get();
             return view('home.dashboard.homepage', compact('client', 'catatan'));
         } catch (\Exception $e) {   
             return redirect('/')->with('error', 'Gagal login dengan Google.');

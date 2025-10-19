@@ -47,7 +47,7 @@ class CatatanController extends Controller
      */
     public function show(Catatan $catatan)
     {
-        //
+        
     }
 
     /**
@@ -55,7 +55,10 @@ class CatatanController extends Controller
      */
     public function edit(Catatan $catatan)
     {
-        //
+        //dd($catatan);
+        $data = Catatan::where( 'id', $catatan->id )->first();
+
+        return view('home.catatan.edit', compact('data'));
     }
 
     /**
@@ -63,7 +66,10 @@ class CatatanController extends Controller
      */
     public function update(UpdateCatatanRequest $request, Catatan $catatan)
     {
-        //
+        $data = $request->validated();
+        $catatan->update($data);
+
+        return redirect()->route('google.login');
     }
 
     /**

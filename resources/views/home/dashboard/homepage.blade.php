@@ -22,7 +22,7 @@
     @foreach ( $catatan as $row)
     <div class="dashboard-container">
         <!-- Tambah Catatan Button -->
-        <a href="{{ route('catatan.show', $row->id) }}" class="btn btn-tambah-catatan mb-3">
+        <a href="{{ route('catatan.edit', $row->id) }}" class="btn btn-tambah-catatan mb-3">
             <table>
                 <tr>
                     <td>

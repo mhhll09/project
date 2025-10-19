@@ -1,10 +1,10 @@
 @extends('home.layout.app')
 @section('content')
-<form method="POST" action="{{ route('catatan.store') }}" id="noteForm">
+<form method="post" action="{{ route('catatan.update', $data->id) }}" id="noteForm">
   @csrf
+  @method('PUT')
   <div class="relative">
 
-    {{-- Tombol centang di pojok kanan atas --}}
     <button type="submit" 
             id="saveNoteBtn"
             class="absolute top-3 right-3 text-green-600 hover:text-green-800 text-2xl">
@@ -12,16 +12,15 @@
     </button>
 
     <div class="note-container mt-10 px-4">
-      <input type="text" name="judul" class="note-title w-full text-xl font-semibold border-none focus:outline-none" placeholder="Tulis judul di sini">
+      <input type="text" name="judul" class="note-title w-full text-xl font-semibold border-none focus:outline-none" placeholder="Tulis judul di sini" value="{{ $data->judul }}" >
 
       <hr class="my-3">
 
       <div class="note-body min-h-[300px] border-none focus:outline-none" 
-           contenteditable="true" 
-           placeholder="Catatan..."></div>
+          contenteditable="true" 
+          placeholder="Catatan...">{{ $data->isi }}</div>
 
-      <input type="hidden" name="isi" id="hidden-content">
-      <input type="hidden" name="user" id="hidden-content">
+      <input type="hidden" name="isi" id="hidden-content" value="{{ $data->isi }}">
     </div>
 
     <div class="toolbar flex gap-2 mt-4 px-4">

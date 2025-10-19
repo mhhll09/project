@@ -11,7 +11,7 @@ class UpdateCatatanRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,10 @@ class UpdateCatatanRequest extends FormRequest
      */
     public function rules(): array
     {
+        //dd($this->all());
         return [
-            //
+            'judul' => 'required',
+            'isi' => 'required'
         ];
     }
 }
