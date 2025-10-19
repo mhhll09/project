@@ -77,6 +77,8 @@ class CatatanController extends Controller
      */
     public function destroy(Catatan $catatan)
     {
-        //
+        $catatan->delete();
+
+        return redirect()->route('google.login');
     }
 }
